@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'cormen/rb/version'
+require 'three/datastructures/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "cormen-rb"
-  spec.version       = Cormen::Rb::VERSION
+  spec.version       = Three::Datastructures::VERSION
   spec.authors       = ["fabioneves"]
   spec.email         = ["fabio.miguel.neves@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
@@ -19,5 +19,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.5"
+  spec.add_development_dependency "rspec"
   spec.add_development_dependency "rake"
 end
