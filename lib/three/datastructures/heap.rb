@@ -60,7 +60,7 @@ module Three
 			end
 
 			def Heap.heap_class(type)
-				Kernel.const_get("Three::Datastructures::#{type.to_s.capitalize}Heap")				
+				Kernel.const_get("Three::Datastructures::Heap::#{type.to_s.capitalize}Heap")
 			end
 
 		end
@@ -89,8 +89,8 @@ module Three
 				smallest = i
 				smallest = l if l < heap_size and elem(l) < elem(i)
 				smallest = r if r < heap_size and elem(r) < elem(smallest)
-				swap(i,largest)
-				heapify(array, largest)
+				swap(i,smallest)
+				heapify(array, smallest)
 				array
 			end
 
