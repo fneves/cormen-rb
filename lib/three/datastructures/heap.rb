@@ -4,7 +4,7 @@ module Three
 			attr_accessor :heap_size, :data
 
 			def initialize(size)
-				@heap_size = size
+				heap_size = size
 				@data = Array.new(size)
 			end
 
@@ -30,22 +30,21 @@ module Three
 
 			def Heap.build_heap(array, type)
 				heap = heap_class(type).new(array.length)
-        heap.data = array
-        heap.heap_size = array.length
-				(array.length/2).downto(0) do |i|
+				for i in array.length .. 0
 					heap.heapify(array, i)
 				end
+				heap.heap_size = array
+				heap.data = array
 				heap
 			end			
 
 			def elem(i)
-				@data[i] if has_elements? and in_limits?(i)
+				@data[i] if has_elements? and in_limits?(i) and @data.length > index
 			end
 
 			def extract
-				result = @data.shift if has_elements?
+				@data.shift if has_elements?
 				@data = heapify(@data, 0)
-        result
 			end
 
 			def swap(i1, i2)
@@ -70,16 +69,13 @@ module Three
 			include Heap
 
 			def heapify(array, i)
-        return if i < 0
 				l = left(i)
 				r = right(i)
 				largest = i
 				largest = l if l < heap_size and elem(l) > elem(i)
 				largest = r if r < heap_size and elem(r) > elem(largest)
-        unless largest == i
-				  swap(i,largest)
-				  heapify(array, largest)
-        end
+				swap(i,largest)
+				heapify(array, largest)
 				array
 			end			
 		end
@@ -93,10 +89,8 @@ module Three
 				smallest = i
 				smallest = l if l < heap_size and elem(l) < elem(i)
 				smallest = r if r < heap_size and elem(r) < elem(smallest)
-        unless smallest == i
-				  swap(i,smallest)
-				  heapify(array, smallest)
-        end
+				swap(i,largest)
+				heapify(array, largest)
 				array
 			end
 
