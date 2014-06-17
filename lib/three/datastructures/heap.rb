@@ -4,7 +4,7 @@ module Three
 			attr_accessor :heap_size, :data
 
 			def initialize(size)
-				heap_size = size
+				@heap_size = size
 				@data = Array.new(size)
 			end
 
